@@ -254,7 +254,6 @@ public class InitPassCodeActivity extends LockObserverActivity {
     }
 
     public void onCancel(View view) {
-        setResult(RESULT_CANCELED);
         finishToActivity(this);
     }
 

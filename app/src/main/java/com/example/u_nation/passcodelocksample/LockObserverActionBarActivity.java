@@ -80,6 +80,12 @@ public class LockObserverActionBarActivity extends ActionBarActivity {
         super.startActivity(intent);
     }
 
+    @Override
+    public void startActivityForResult(Intent intent, int requestCode) {
+        isTransition = true;
+        super.startActivityForResult(intent, requestCode);
+    }
+
     /* finish()後に前のActivityに戻る場合 */
     protected void finishToActivity(Activity activity) {
         isTransition = true;
