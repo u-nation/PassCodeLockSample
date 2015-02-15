@@ -1,0 +1,2 @@
+# PassCodeLockSample
+Androidでパスコードロックを実現するサンプルです
