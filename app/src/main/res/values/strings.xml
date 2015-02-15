@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">PassCodeLockSample</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Image系レイアウトのcontentDescription用 -->
+    <string name="image_error">イメージ</string>
+    <string name="cansel">キャンセル</string>
+    <string name="passcode_lock">パスコードロック</string>
+    <string name="passcode_set">パスコードを設定して下さい</string>
+    <string name="passcode_defalt_text">パスコードを忘れた場合は\n再インストールして下さい</string>
+    <string name="passcode_input">パスコード入力</string>
+    <string name="passcode_input_sub">パスコードを入力してください</string>
+    <string name="zero">0</string>
+    <string name="one">1</string>
+    <string name="two">2</string>
+    <string name="three">3</string>
+    <string name="four">4</string>
+    <string name="five">5</string>
+    <string name="six">6</string>
+    <string name="seven">7</string>
+    <string name="eight">8</string>
+    <string name="nine">9</string>
+    <string name="period">.</string>
+    <string name="title_activity_sample1">Sample1Activity</string>
+    <string name="title_activity_sample2">Sample2Activity</string>
+
+    <!-- SampleActivity -->
+    <string name="sample1">SampleActivity1</string>
+    <string name="sample2">SampleActivity2</string>
+    <string name="sample11">SampleActivity11</string>
+    <string name="sample22">SampleActivity22</string>
+    <string name="title_activity_lock_observer_action_bar">LockObserverActionBarActivity</string>
+
+</resources>

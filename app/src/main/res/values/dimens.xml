@@ -1,0 +1,27 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!-- EX -->
+    <dimen name="titlebar_height">45dip</dimen>
+    <dimen name="button_height">37dip</dimen>
+    <dimen name="button_width">50dip</dimen>
+    <dimen name="button_margin">5dip</dimen>
+    <dimen name="text_size_micro">12sp</dimen>
+    <dimen name="text_size_small">14sp</dimen>
+    <dimen name="text_size_pre_medium">16sp</dimen>
+    <dimen name="text_size_medium">18sp</dimen>
+    <dimen name="text_size_large">22sp</dimen>
+    <dimen name="text_size_huge">26sp</dimen>
+    <dimen name="text_size_extra_huge">36sp</dimen>
+
+    <!-- アプリ固有の値 -->
+    <dimen name="diet_weight">80sp</dimen>
+    <dimen name="diet_weight_kg">50sp</dimen>
+    <dimen name="graph_underbar">40dip</dimen>
+    <dimen name="markerview_width">100dip</dimen>
+    <dimen name="markerview_height">105dip</dimen>
+
+</resources>
