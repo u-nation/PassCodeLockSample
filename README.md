@@ -40,4 +40,4 @@ activity_input_pass_code.xml
 
 ## Licence
 
-[MIT](https://github.com/tcnksm/tool/blob/master/LICENCE)
+特に設けてありません。上記のことだけ守って頂ければ改変、再配布など自由に行ってください。

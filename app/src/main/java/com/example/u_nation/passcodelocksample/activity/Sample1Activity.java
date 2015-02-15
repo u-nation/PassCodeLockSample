@@ -54,14 +54,14 @@ public class Sample1Activity extends LockObserverActivity {
         LogUtil.i("onDestroy");
     }
 
-    public void onSample11(View view){
+    public void onSample11(View view) {
         startActivity(Sample11Activity.createIntent(getApplicationContext()));
         finish();
     }
 
     public void onBack(View view) {
         startActivity(MainActivity.createIntent(getApplicationContext()));
-        finishToActivity(this);
+        finish();
     }
 
     @Override
@@ -69,7 +69,7 @@ public class Sample1Activity extends LockObserverActivity {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             LogUtil.d("KeyEvent.KEYCODE_BACK");
             startActivity(MainActivity.createIntent(getApplicationContext()));
-            finishToActivity(this);
+            finish();
         }
         return super.onKeyDown(keyCode, event);
     }
