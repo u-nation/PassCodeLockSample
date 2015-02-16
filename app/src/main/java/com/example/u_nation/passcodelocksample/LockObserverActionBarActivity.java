@@ -35,13 +35,13 @@ public class LockObserverActionBarActivity extends ActionBarActivity {
     protected void onPause() {
         super.onPause();
         LogUtil.i("onPause");
-        checkIsTransition();
     }
 
     @Override
     protected void onStop() {
         super.onStop();
         LogUtil.i("onStop");
+        checkIsTransition();
     }
 
     @Override
