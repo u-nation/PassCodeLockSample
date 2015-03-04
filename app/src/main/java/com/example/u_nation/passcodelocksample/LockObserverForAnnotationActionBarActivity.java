@@ -12,9 +12,11 @@ import com.example.u_nation.passcodelocksample.util.ShowToast;
 import static com.example.u_nation.passcodelocksample.AppConfig.PREF_KEY_APPLICATION_BACKGROUND;
 import static com.example.u_nation.passcodelocksample.AppConfig.PREF_KEY_IS_LOCKED;
 
-public class LockObserverActionBarActivity extends ActionBarActivity {
+public class LockObserverForAnnotationActionBarActivity extends ActionBarActivity {
     /* Activityがバックグラウンドに行く時、画面遷移なのか、アプリから離れたのかを判断 */
     public static boolean isTransition;
+    /* onStopが二回呼ばれる対策 */
+    public static volatile boolean isTransitionForAnnotation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +43,10 @@ public class LockObserverActionBarActivity extends ActionBarActivity {
     protected void onStop() {
         super.onStop();
         LogUtil.i("onStop");
+        if (isTransitionForAnnotation) {
+            isTransitionForAnnotation = false;
+            return;
+        }
         checkIsTransition();
     }
 
@@ -89,6 +95,7 @@ public class LockObserverActionBarActivity extends ActionBarActivity {
     /* finish()後に前のActivityに戻る場合 */
     protected void finishToActivity(Activity activity) {
         isTransition = true;
+        isTransitionForAnnotation = true;
         activity.finish();
         this.finish();
     }
@@ -98,4 +105,5 @@ public class LockObserverActionBarActivity extends ActionBarActivity {
         super.onDestroy();
         LogUtil.i("onDestroy");
     }
+
 }

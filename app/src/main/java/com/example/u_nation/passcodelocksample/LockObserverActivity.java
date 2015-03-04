@@ -50,14 +50,14 @@ public class LockObserverActivity extends Activity {
     }
 
     private void checkIsTransition() {
-        if (!isTransition) {
+        if (isTransition) {
+            isTransition = false;
+        } else {
             if (checkIsLocked()) {
                 ShowToast.show("バックグラウンド", this);
                 LogUtil.i("isTransition = " + isTransition);
                 PrefUtil.setBool(getApplicationContext(), PREF_KEY_APPLICATION_BACKGROUND, true);
             }
-        } else {
-            isTransition = false;
         }
     }
 
