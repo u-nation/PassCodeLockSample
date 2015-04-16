@@ -1,5 +1,6 @@
 package com.example.u_nation.passcodelocksample;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -16,7 +17,7 @@ import android.widget.TextView;
 import com.example.u_nation.passcodelocksample.util.PrefUtil;
 import com.example.u_nation.passcodelocksample.util.ShowToast;
 
-public class InitPassCodeActivity extends LockObserverActivity {
+public class InitPassCodeActivity extends Activity {
 
     // テキストの定数
     private final String TEXT_MAIN_CONFIRM = "パスコード再入力";
@@ -218,10 +219,10 @@ public class InitPassCodeActivity extends LockObserverActivity {
             default:
                 if (this.password == Integer.parseInt(stringBuilder.toString())) {
                     // パスワード入力が完了したらpasswordをプリファレンスに保存
-                    ShowToast.show("パスコード設定しました！",this);
+                    ShowToast.show("パスコード設定しました！", this);
                     PrefUtil.setBool(getApplicationContext(), AppConfig.PREF_KEY_IS_LOCKED, true);
                     PrefUtil.setInt(getApplicationContext(), AppConfig.PREF_KEY_PASSWORD, password);
-                    finishToActivity(this);
+                    finish();
                 } else {
                     // もう一度やり直し
                     text_main_pass.setText(TEXT_MAIN_MISTAKE);
@@ -254,13 +255,13 @@ public class InitPassCodeActivity extends LockObserverActivity {
     }
 
     public void onCancel(View view) {
-        finishToActivity(this);
+        finish();
     }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-            finishToActivity(this);
+            finish();
             return true;
         }
         return super.onKeyDown(keyCode, event);
