@@ -10,10 +10,10 @@ Androidでパスコードロックを実現するサンプルです
 ## Usage
 API 14以上限定にしました
 
-Applicationクラスを継承したLockObserverApplication
-パスワード設定画面のInitPassCodeActivity
-パスワード確認画面のConfirmPassCodeActivity
-をそのままコピペするだけです。
+**Applicationクラスを継承したLockObserverApplication**
+**パスワード設定画面のInitPassCodeActivity**
+**パスワード確認画面のConfirmPassCodeActivity**
+**をそのままコピペするだけです。**
 
 ## NOTE
 
