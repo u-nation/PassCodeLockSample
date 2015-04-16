@@ -5,12 +5,16 @@ import android.app.Application;
 import android.os.Bundle;
 
 import com.example.u_nation.passcodelocksample.util.LogUtil;
+import com.example.u_nation.passcodelocksample.util.PrefUtil;
 
 import java.util.HashSet;
+
+import static com.example.u_nation.passcodelocksample.AppConfig.PREF_KEY_IS_LOCKED;
 
 public class LockObserverApplication extends Application implements Application.ActivityLifecycleCallbacks {
 
     private HashSet<Integer> activityStack;
+    private boolean isLaunchApp;
 
     @Override
     public void onCreate() {
@@ -35,8 +39,14 @@ public class LockObserverApplication extends Application implements Application.
         LogUtil.w("activityStack.size() = " + activityStack.size());
         if (activityStack.size() == 0) {
             LogUtil.w("起動");
+            isLaunchApp = true;
         }
         activityStack.add(activity.hashCode());
+        if (isLaunchApp) {
+            isLaunchApp = false;
+            if (checkIsLocked())
+                activity.startActivity(ConfirmPassCodeActivity.createIntent(getApplicationContext()));
+        }
     }
 
     @Override
@@ -65,6 +75,10 @@ public class LockObserverApplication extends Application implements Application.
 
     @Override
     public void onActivityDestroyed(Activity activity) {
+    }
 
+    /* パスワード設定しているか判定 */
+    protected boolean checkIsLocked() {
+        return PrefUtil.getBool(getApplicationContext(), PREF_KEY_IS_LOCKED);
     }
 }

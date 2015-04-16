@@ -8,28 +8,12 @@ Androidでパスコードロックを実現するサンプルです
 ![](/passcodelock.gif)
 
 ## Usage
+API 14以上限定にしました
 
-Activityを作る時、ライフサイクルを監視する  
-**LockObserverActivity**  
-**LockObserverActionBarActivity**  
-を継承してください。  
-
-finish()メソッドで前画面に遷移する場合は  
-finishToActivity()メソッドを呼び出してください。
-
-AndroidAnnotationsを使用している場合
-start()メソッドを呼ぶ前に、isTransitionにtrueを代入してください。
-
-	LockObserverActivity.isTransition = true;
-	SampleActivity_.intent(this).start();　　
-
-  or
-
-	LockObserverActionBarActivity.isTransition = true;  
-	SampleActivity_.intent(this).start();  
-
-その他でアプリが終了するわけではないが、onPause()が呼ばれる
-場面では同じようにisTransitionにtrueを代入してください。
+Applicationクラスを継承したLockObserverApplication
+パスワード設定画面のInitPassCodeActivity
+パスワード確認画面のConfirmPassCodeActivity
+をそのままコピペするだけです。
 
 ## NOTE
 

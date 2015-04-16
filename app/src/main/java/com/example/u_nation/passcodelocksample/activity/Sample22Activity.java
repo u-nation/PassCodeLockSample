@@ -3,14 +3,14 @@ package com.example.u_nation.passcodelocksample.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.KeyEvent;
 import android.view.View;
 
-import com.example.u_nation.passcodelocksample.LockObserverActionBarActivity;
 import com.example.u_nation.passcodelocksample.R;
 import com.example.u_nation.passcodelocksample.util.LogUtil;
 
-public class Sample22Activity extends LockObserverActionBarActivity {
+public class Sample22Activity extends ActionBarActivity {
 
     public static Intent createIntent(Context context) {
         Intent intent = new Intent(context, Sample22Activity.class);
@@ -56,14 +56,14 @@ public class Sample22Activity extends LockObserverActionBarActivity {
     }
 
     public void onBack(View view) {
-        finishToActivity(this);
+        finish();
     }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             LogUtil.i("KeyEvent.KEYCODE_BACK");
-            finishToActivity(this);
+            finish();
         }
         return super.onKeyDown(keyCode, event);
     }

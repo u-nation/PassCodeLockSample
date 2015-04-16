@@ -1,16 +1,16 @@
 package com.example.u_nation.passcodelocksample.activity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 
-import com.example.u_nation.passcodelocksample.LockObserverActivity;
 import com.example.u_nation.passcodelocksample.R;
 import com.example.u_nation.passcodelocksample.util.LogUtil;
 
-public class Sample1Activity extends LockObserverActivity {
+public class Sample1Activity extends Activity {
 
     public static Intent createIntent(Context context) {
         Intent intent = new Intent(context, Sample1Activity.class);

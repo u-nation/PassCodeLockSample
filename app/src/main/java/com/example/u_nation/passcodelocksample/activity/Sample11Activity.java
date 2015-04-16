@@ -1,16 +1,16 @@
 package com.example.u_nation.passcodelocksample.activity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 
-import com.example.u_nation.passcodelocksample.LockObserverActivity;
 import com.example.u_nation.passcodelocksample.R;
 import com.example.u_nation.passcodelocksample.util.LogUtil;
 
-public class Sample11Activity extends LockObserverActivity {
+public class Sample11Activity extends Activity {
 
     public static Intent createIntent(Context context) {
         Intent intent = new Intent(context, Sample11Activity.class);
@@ -56,7 +56,7 @@ public class Sample11Activity extends LockObserverActivity {
 
     public void onBack(View view) {
         startActivity(Sample1Activity.createIntent(getApplicationContext()));
-        finishToActivity(this);
+        finish();
     }
 
     @Override
@@ -64,7 +64,7 @@ public class Sample11Activity extends LockObserverActivity {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             LogUtil.d("KeyEvent.KEYCODE_BACK");
             startActivity(Sample1Activity.createIntent(getApplicationContext()));
-            finishToActivity(this);
+            finish();
         }
         return super.onKeyDown(keyCode, event);
     }
