@@ -9,6 +9,10 @@ Androidでパスコードロックを実現するサンプルです
 
 ## Usage
 API 14以上限定にしました
+株式会社グノシー山戸茂樹様のスライドを参考にさせて頂きました。  
+参考URL  
+<http://www.slideshare.net/heki1224/android-45736528>
+
 
 **Applicationクラスを継承したLockObserverApplication**
 **パスワード設定画面のInitPassCodeActivity**
