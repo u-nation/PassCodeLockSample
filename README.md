@@ -14,10 +14,10 @@ API 14以上限定にしました
 <http://www.slideshare.net/heki1224/android-45736528>
 
 
-**Applicationクラスを継承したLockObserverApplication**
-**パスワード設定画面のInitPassCodeActivity**
-**パスワード確認画面のConfirmPassCodeActivity**
-**をそのままコピペするだけです。**
+**Applicationクラスを継承したLockObserverApplication**  
+**パスワード設定画面のInitPassCodeActivity**  
+**パスワード確認画面のConfirmPassCodeActivity**  
+**をそのままコピペするだけです。**  
 
 ## NOTE
 
