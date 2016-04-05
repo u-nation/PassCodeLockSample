@@ -290,6 +290,7 @@
                 android:background="@drawable/bg_btn_number"
                 android:clickable="true"
                 android:gravity="center"
+                android:visibility="invisible"
                 android:onClick="onCancel"
                 android:text="@string/cancel"
                 android:textColor="@color/black"

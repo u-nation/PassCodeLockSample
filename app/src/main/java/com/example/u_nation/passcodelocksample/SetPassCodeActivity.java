@@ -1,6 +1,5 @@
 package com.example.u_nation.passcodelocksample;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -9,6 +8,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v7.app.AppCompatActivity;
 import android.util.SparseArray;
 import android.view.KeyEvent;
 import android.view.View;
@@ -20,39 +20,36 @@ import com.example.u_nation.passcodelocksample.util.ShowToast;
 
 import timber.log.Timber;
 
-public class PassCodeActivity extends Activity implements View.OnClickListener {
+public class SetPassCodeActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final String KEY_IS_INITIALIZE = "init";
     private final String TEXT_MAIN_CONFIRM = "パスコード再入力";
     private final String TEXT_SUB_CONFIRM = "確認のためもう一度入力してください";
     private final String TEXT_MAIN_MISTAKE = "パスコードロック";
     private final String TEXT_SUB_MISTAKE = "パスコードが間違っています。もう一度最初から入力してください";
-    private boolean isDoubleCheck = false;
-    private StringBuilder stringBuilder = new StringBuilder();
     private TextView text_main_pass;
     private TextView text_sub_pass;
     private ImageView[] array_image_view;
+    private StringBuilder stringBuilder = new StringBuilder();
     private SparseArray<String> array_box = new SparseArray<>();
     private Bitmap bitmapBlack = Bitmap.createBitmap(300, 300, Bitmap.Config.ARGB_8888);
     private Bitmap bitmapGrey = Bitmap.createBitmap(300, 300, Bitmap.Config.ARGB_8888);
-
-    private boolean isInitialize;
+    private int password;
+    private boolean isDoubleCheck = false;
 
     public static Intent createIntent(Context context, boolean isInitialize) {
-        return new Intent(context, PassCodeActivity.class).putExtra(KEY_IS_INITIALIZE, isInitialize);
+        return new Intent(context, SetPassCodeActivity.class).putExtra(KEY_IS_INITIALIZE, isInitialize);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_input_pass_code);
-        isInitialize = getIntent().getBooleanExtra(KEY_IS_INITIALIZE, false);
         initViews();
         initCircleCanvas();
     }
 
     private void initViews() {
-        if (isInitialize) findViewById(R.id.box_cancel).setVisibility(View.VISIBLE);
         text_main_pass = (TextView) findViewById(R.id.text_main_pass);
         text_sub_pass = (TextView) findViewById(R.id.text_sub_pass);
         array_image_view = new ImageView[]{(ImageView) findViewById(R.id.circle1), (ImageView) findViewById(R.id.circle2), (ImageView) findViewById(R.id.circle3), (ImageView) findViewById(R.id.circle4)};
@@ -124,51 +121,37 @@ public class PassCodeActivity extends Activity implements View.OnClickListener {
     }
 
     private void confirmPassword() {
-        if (isInitialize) {
-            if (isDoubleCheck) {
-                if (PrefUtil.getInt(Constants.PREF_KEY_PASSWORD) == Integer.parseInt(stringBuilder.toString())) {
-                    ShowToast.show("パスコード設定しました！", this);
-                    PrefUtil.putBoolean(Constants.PREF_KEY_IS_LOCKED, true);
-                    finish();
-                } else {
-                    PrefUtil.removeValue(Constants.PREF_KEY_PASSWORD);
-                    text_main_pass.setText(TEXT_MAIN_MISTAKE);
-                    text_sub_pass.setText(TEXT_SUB_MISTAKE);
-                    isDoubleCheck = false;
-                    initStringBuilder();
-                    initCircleColor();
-                }
-            } else {
-                isDoubleCheck = true;
-                text_main_pass.setText(TEXT_MAIN_CONFIRM);
-                text_sub_pass.setText(TEXT_SUB_CONFIRM);
-                PrefUtil.putInt(Constants.PREF_KEY_PASSWORD, Integer.parseInt(stringBuilder.toString()));
-                initStringBuilder();
-                initCircleColor();
-            }
-        } else {
-            if (Integer.parseInt(stringBuilder.toString()) == PrefUtil.getInt(Constants.PREF_KEY_PASSWORD)) {
-                PrefUtil.putBoolean(Constants.PREF_KEY_APPLICATION_BACKGROUND, false);
+        if (isDoubleCheck) {
+            if (password == Integer.parseInt(stringBuilder.toString())) {
+                ShowToast.show("パスコード設定しました！", this);
+                PrefUtil.putInt(Constants.PREF_KEY_PASSWORD, password);
+                PrefUtil.putBoolean(Constants.PREF_KEY_IS_LOCKED, true);
                 finish();
             } else {
                 text_main_pass.setText(TEXT_MAIN_MISTAKE);
                 text_sub_pass.setText(TEXT_SUB_MISTAKE);
+                isDoubleCheck = false;
                 initStringBuilder();
                 initCircleColor();
             }
+        } else {
+            isDoubleCheck = true;
+            text_main_pass.setText(TEXT_MAIN_CONFIRM);
+            text_sub_pass.setText(TEXT_SUB_CONFIRM);
+            password = Integer.parseInt(stringBuilder.toString());
+            initStringBuilder();
+            initCircleColor();
         }
     }
 
-
     public void onCancel(View view) {
-        if (isInitialize) finish();
+        finish();
     }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-            if (isInitialize) finish();
-            else moveTaskToBack(true);
+            finish();
             return true;
         }
         return super.onKeyDown(keyCode, event);

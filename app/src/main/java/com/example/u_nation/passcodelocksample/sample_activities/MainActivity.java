@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.example.u_nation.passcodelocksample.Constants;
-import com.example.u_nation.passcodelocksample.PassCodeActivity;
+import com.example.u_nation.passcodelocksample.SetPassCodeActivity;
 import com.example.u_nation.passcodelocksample.R;
 import com.example.u_nation.passcodelocksample.util.PrefUtil;
 import com.example.u_nation.passcodelocksample.util.ShowToast;
@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onLock(View view) {
-        startActivity(PassCodeActivity.createIntent(getApplicationContext(), true));
+        startActivity(SetPassCodeActivity.createIntent(getApplicationContext(), true));
     }
 
     public void onUnlock(View view) {
