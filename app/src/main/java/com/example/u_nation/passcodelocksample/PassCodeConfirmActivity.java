@@ -19,10 +19,8 @@ import com.example.u_nation.passcodelocksample.util.PrefUtil;
 
 import timber.log.Timber;
 
-public class ConfirmPassCodeActivity extends AppCompatActivity implements View.OnClickListener {
-    private final String TEXT_MAIN_MISTAKE = "パスコード入力";
+public class PassCodeConfirmActivity extends AppCompatActivity implements View.OnClickListener {
     private final String TEXT_SUB_MISTAKE = "パスコードが間違っています";
-    private TextView text_main_pass;
     private TextView text_sub_pass;
     private ImageView[] array_image_view;
     private StringBuilder stringBuilder = new StringBuilder();
@@ -31,19 +29,18 @@ public class ConfirmPassCodeActivity extends AppCompatActivity implements View.O
     private Bitmap bitmapGrey = Bitmap.createBitmap(300, 300, Bitmap.Config.ARGB_8888);
 
     public static Intent createIntent(Context context) {
-        return new Intent(context, ConfirmPassCodeActivity.class);
+        return new Intent(context, PassCodeConfirmActivity.class);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_input_pass_code);
+        setContentView(R.layout.activity_confirm_pass_code);
         initViews();
         initCircleCanvas();
     }
 
     private void initViews() {
-        text_main_pass = (TextView) findViewById(R.id.text_main_pass);
         text_sub_pass = (TextView) findViewById(R.id.text_sub_pass);
         array_image_view = new ImageView[]{(ImageView) findViewById(R.id.circle1), (ImageView) findViewById(R.id.circle2), (ImageView) findViewById(R.id.circle3), (ImageView) findViewById(R.id.circle4)};
 
@@ -117,7 +114,6 @@ public class ConfirmPassCodeActivity extends AppCompatActivity implements View.O
         if (Integer.parseInt(stringBuilder.toString()) == PrefUtil.getInt(Constants.PREF_KEY_PASSWORD)) {
             finish();
         } else {
-            text_main_pass.setText(TEXT_MAIN_MISTAKE);
             text_sub_pass.setText(TEXT_SUB_MISTAKE);
             initStringBuilder();
             initCircleColor();

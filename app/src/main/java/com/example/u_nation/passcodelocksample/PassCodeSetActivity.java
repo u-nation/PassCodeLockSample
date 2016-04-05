@@ -20,7 +20,7 @@ import com.example.u_nation.passcodelocksample.util.ShowToast;
 
 import timber.log.Timber;
 
-public class SetPassCodeActivity extends AppCompatActivity implements View.OnClickListener {
+public class PassCodeSetActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final String KEY_IS_INITIALIZE = "init";
     private final String TEXT_MAIN_CONFIRM = "パスコード再入力";
@@ -38,7 +38,7 @@ public class SetPassCodeActivity extends AppCompatActivity implements View.OnCli
     private boolean isDoubleCheck = false;
 
     public static Intent createIntent(Context context, boolean isInitialize) {
-        return new Intent(context, SetPassCodeActivity.class).putExtra(KEY_IS_INITIALIZE, isInitialize);
+        return new Intent(context, PassCodeSetActivity.class).putExtra(KEY_IS_INITIALIZE, isInitialize);
     }
 
     @Override

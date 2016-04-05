@@ -7,6 +7,7 @@
 
     <string name="image_error">イメージ</string>
     <string name="cancel">キャンセル</string>
+    <string name="passcode_confirm">パスコードの確認</string>
     <string name="passcode_lock">パスコードロック</string>
     <string name="passcode_set">パスコードを設定して下さい</string>
     <string name="passcode_default_text">パスコードを入力してください</string>

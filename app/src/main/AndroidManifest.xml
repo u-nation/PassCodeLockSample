@@ -18,11 +18,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SetPassCodeActivity"
+            android:name=".PassCodeSetActivity"
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".ConfirmPassCodeActivity"
+            android:name=".PassCodeConfirmActivity"
             android:screenOrientation="portrait">
         </activity>
         <activity

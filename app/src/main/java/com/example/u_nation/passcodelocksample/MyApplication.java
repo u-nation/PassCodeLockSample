@@ -48,7 +48,7 @@ public class MyApplication extends Application implements Application.ActivityLi
         isLaunchApp = activityStack.size() == 0;
         activityStack.add(activity.hashCode());
         if (isLaunchApp) {
-            if (PrefUtil.getBoolean(PREF_KEY_IS_LOCKED)) activity.startActivity(ConfirmPassCodeActivity.createIntent(getApplicationContext()));
+            if (PrefUtil.getBoolean(PREF_KEY_IS_LOCKED)) activity.startActivity(PassCodeConfirmActivity.createIntent(getApplicationContext()));
         }
     }
 
