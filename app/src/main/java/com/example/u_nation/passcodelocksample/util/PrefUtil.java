@@ -1,114 +1,79 @@
 package com.example.u_nation.passcodelocksample.util;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
+
+import com.example.u_nation.passcodelocksample.MyApplication;
 
 public class PrefUtil {
-    public static SharedPreferences shPref;
-    public static SharedPreferences.Editor editor;
 
-    @SuppressLint({"CommitPrefEdits"})
-    public static synchronized void getInstance(Context context) {
-        if ((shPref == null) || (editor == null)) {
-            shPref = PreferenceManager.getDefaultSharedPreferences(context);
-            editor = shPref.edit();
-        }
+    private static SharedPreferences shPref;
+    private static SharedPreferences.Editor editor;
+
+    private static SharedPreferences.Editor getEditor() {
+        if (editor == null) editor = getSharedPreferences().edit();
+        return editor;
     }
 
-    public static synchronized String getString(Context context, String key) {
-        String str = "";
-        try {
-            getInstance(context);
-            str = shPref.getString(key, "");
-        } catch (ClassCastException e) {
-            str = "";
-        }
-        return str;
+    private static SharedPreferences getSharedPreferences() {
+        if (shPref == null) shPref = MyApplication.getInstance().getSharedPreferences(MyApplication.getInstance().getPackageName(), Context.MODE_PRIVATE);
+        return shPref;
     }
 
-    public static synchronized int getInt(Context context, String key) {
-        int val = 0;
-        try {
-            getInstance(context);
-            val = shPref.getInt(key, 0);
-        } catch (ClassCastException e) {
-            val = 0;
-        }
-        return val;
+    public static void setSharedPreferences(Context context) {
+        if (shPref == null) shPref = context.getSharedPreferences(context.getPackageName(), Context.MODE_PRIVATE);
     }
 
-    public static synchronized Float getFloat(Context context, String key) {
-        float val = 0.0F;
-        try {
-            getInstance(context);
-            val = shPref.getFloat(key, 0.0F);
-        } catch (ClassCastException e) {
-            val = 0.0F;
-        }
-        return Float.valueOf(val);
+    /**
+     * @param key default -1
+     */
+    public static int getInt(String key) {
+        return getSharedPreferences().getInt(key, -1);
     }
 
-    public static synchronized Long getLong(Context context, String key) {
-        long val = 0L;
-        try {
-            getInstance(context);
-            val = shPref.getLong(key, 0L);
-        } catch (ClassCastException e) {
-            val = 0L;
-        }
-        return Long.valueOf(val);
+    /**
+     * @param key default -1L
+     */
+    public static long getLong(String key) {
+        return getSharedPreferences().getLong(key, -1L);
     }
 
-    public static synchronized Boolean getBool(Context context, String key) {
-        Boolean val = Boolean.valueOf(false);
-        try {
-            getInstance(context);
-            val = Boolean.valueOf(shPref.getBoolean(key, false));
-        } catch (ClassCastException e) {
-            val = Boolean.valueOf(false);
-        }
-        return val;
+    /**
+     * @param key default false
+     */
+    public static boolean getBoolean(String key) {
+        return getSharedPreferences().getBoolean(key, false);
     }
 
-    public static synchronized void setString(Context context, String key, String value) {
-        getInstance(context);
-        editor.putString(key, value);
-        editor.commit();
+    /**
+     * @param key default ""
+     */
+    public static String getString(String key) {
+        return getSharedPreferences().getString(key, "");
     }
 
-    public static synchronized void setInt(Context context, String key, int valueInt) {
-        getInstance(context);
-        editor.putInt(key, valueInt);
-        editor.commit();
+
+    public static void putInt(String key, int value) {
+        getEditor().putInt(key, value).apply();
     }
 
-    public static synchronized void setFloat(Context context, String key, Float valueFloat) {
-        getInstance(context);
-        editor.putFloat(key, valueFloat.floatValue());
-        editor.commit();
+    public static void putLong(String key, long value) {
+        getEditor().putLong(key, value).apply();
     }
 
-    public static synchronized void setLong(Context context, String key, Long valueLong) {
-        getInstance(context);
-        editor.putLong(key, valueLong.longValue());
-        editor.commit();
+    public static void putBoolean(String key, boolean value) {
+        getEditor().putBoolean(key, value).apply();
     }
 
-    public static synchronized void setBool(Context context, String key, boolean bool) {
-        getInstance(context);
-        editor.putBoolean(key, bool);
-        editor.commit();
+    public static void putString(String key, String value) {
+        getEditor().putString(key, value).apply();
     }
 
-    public static synchronized void removeValue(Context context, String key) {
-        getInstance(context);
-        editor.remove(key).commit();
+    public static boolean isEmpty(String key) {
+        return getString(key).equals("");
     }
 
-    public static synchronized void clearAllPreferences(Context context, String key) {
-        getInstance(context);
-        shPref.edit().clear().commit();
+    public static synchronized void removeValue(String key) {
+        getEditor().remove(key).apply();
     }
 }

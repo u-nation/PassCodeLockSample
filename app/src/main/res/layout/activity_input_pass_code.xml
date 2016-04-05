@@ -22,7 +22,7 @@
             android:layout_weight="6"
             android:gravity="center"
             android:text="@string/passcode_lock"
-            android:textColor="@color/pass_number"
+            android:textColor="@color/black"
             android:textSize="@dimen/text_size_large"
             android:textStyle="normal"/>
 
@@ -32,8 +32,8 @@
             android:layout_height="0dp"
             android:layout_weight="4"
             android:gravity="top|center_horizontal"
-            android:text="@string/passcode_defalt_text"
-            android:textColor="@color/pass_number"
+            android:text="@string/passcode_default_text"
+            android:textColor="@color/black"
             android:textSize="@dimen/text_size_small"/>
     </LinearLayout>
 
@@ -107,13 +107,13 @@
         <View
             android:layout_width="wrap_content"
             android:layout_height="1dp"
-            android:background="@color/pass_number"/>
+            android:background="@color/black"/>
 
         <View
             android:layout_width="wrap_content"
             android:layout_height="1dp"
             android:layout_marginTop="5dp"
-            android:background="@color/pass_number"/>
+            android:background="@color/black"/>
     </LinearLayout>
 
     <LinearLayout
@@ -136,12 +136,12 @@
                 android:layout_width="0dip"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@null"
+                android:background="@drawable/bg_btn_number"
                 android:clickable="true"
                 android:gravity="center"
                 android:onClick="put1"
                 android:text="@string/one"
-                android:textColor="@color/pass_number"
+                android:textColor="@color/black"
                 android:textColorHint="@android:color/black"
                 android:textSize="36sp"
                 android:textStyle="bold"/>
@@ -151,12 +151,12 @@
                 android:layout_width="0dip"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@null"
+                android:background="@drawable/bg_btn_number"
                 android:clickable="true"
                 android:gravity="center"
                 android:onClick="put2"
                 android:text="@string/two"
-                android:textColor="@color/pass_number"
+                android:textColor="@color/black"
                 android:textSize="36sp"
                 android:textStyle="bold"/>
 
@@ -165,12 +165,12 @@
                 android:layout_width="0dip"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@null"
+                android:background="@drawable/bg_btn_number"
                 android:clickable="true"
                 android:gravity="center"
                 android:onClick="put3"
                 android:text="@string/three"
-                android:textColor="@color/pass_number"
+                android:textColor="@color/black"
                 android:textSize="36sp"
                 android:textStyle="bold"/>
         </LinearLayout>
@@ -187,12 +187,12 @@
                 android:layout_width="0dip"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@null"
+                android:background="@drawable/bg_btn_number"
                 android:clickable="true"
                 android:gravity="center"
                 android:onClick="put4"
                 android:text="@string/four"
-                android:textColor="@color/pass_number"
+                android:textColor="@color/black"
                 android:textSize="36sp"
                 android:textStyle="bold"/>
 
@@ -201,12 +201,12 @@
                 android:layout_width="0dip"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@null"
+                android:background="@drawable/bg_btn_number"
                 android:clickable="true"
                 android:gravity="center"
                 android:onClick="put5"
                 android:text="@string/five"
-                android:textColor="@color/pass_number"
+                android:textColor="@color/black"
                 android:textSize="36sp"
                 android:textStyle="bold"/>
 
@@ -215,12 +215,12 @@
                 android:layout_width="0dip"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@null"
+                android:background="@drawable/bg_btn_number"
                 android:clickable="true"
                 android:gravity="center"
                 android:onClick="put6"
                 android:text="@string/six"
-                android:textColor="@color/pass_number"
+                android:textColor="@color/black"
                 android:textSize="36sp"
                 android:textStyle="bold"/>
         </LinearLayout>
@@ -237,12 +237,12 @@
                 android:layout_width="0dip"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@null"
+                android:background="@drawable/bg_btn_number"
                 android:clickable="true"
                 android:gravity="center"
                 android:onClick="put7"
                 android:text="@string/seven"
-                android:textColor="@color/pass_number"
+                android:textColor="@color/black"
                 android:textSize="36sp"
                 android:textStyle="bold"/>
 
@@ -251,12 +251,12 @@
                 android:layout_width="0dip"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@null"
+                android:background="@drawable/bg_btn_number"
                 android:clickable="true"
                 android:gravity="center"
                 android:onClick="put8"
                 android:text="@string/eight"
-                android:textColor="@color/pass_number"
+                android:textColor="@color/black"
                 android:textSize="36sp"
                 android:textStyle="bold"/>
 
@@ -265,12 +265,12 @@
                 android:layout_width="0dip"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@null"
+                android:background="@drawable/bg_btn_number"
                 android:clickable="true"
                 android:gravity="center"
                 android:onClick="put9"
                 android:text="@string/nine"
-                android:textColor="@color/pass_number"
+                android:textColor="@color/black"
                 android:textSize="36sp"
                 android:textStyle="bold"/>
         </LinearLayout>
@@ -287,24 +287,26 @@
                 android:layout_width="0dip"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@null"
+                android:background="@drawable/bg_btn_number"
                 android:clickable="true"
                 android:gravity="center"
+                android:visibility="invisible"
                 android:onClick="onCancel"
-                android:text="@string/cansel"
-                android:textColor="@color/pass_number"/>
+                android:text="@string/cancel"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_pre_medium"
+                android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/box0"
                 android:layout_width="0dip"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@null"
+                android:background="@drawable/bg_btn_number"
                 android:clickable="true"
                 android:gravity="center"
-                android:onClick="put0"
                 android:text="@string/zero"
-                android:textColor="@color/pass_number"
+                android:textColor="@color/black"
                 android:textSize="36sp"
                 android:textStyle="bold"/>
 
@@ -321,7 +323,7 @@
                     android:background="@drawable/button_passdelete"
                     android:clickable="true"
                     android:onClick="onDelete"
-                    android:textColor="@color/pass_number"/>
+                    android:textColor="@color/black"/>
             </RelativeLayout>
         </LinearLayout>
     </LinearLayout>

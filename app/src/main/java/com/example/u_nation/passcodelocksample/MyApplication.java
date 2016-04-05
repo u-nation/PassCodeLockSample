@@ -4,22 +4,30 @@ import android.app.Activity;
 import android.app.Application;
 import android.os.Bundle;
 
-import com.example.u_nation.passcodelocksample.util.LogUtil;
 import com.example.u_nation.passcodelocksample.util.PrefUtil;
 
 import java.util.HashSet;
 
-import static com.example.u_nation.passcodelocksample.AppConfig.PREF_KEY_IS_LOCKED;
+import timber.log.Timber;
 
-public class LockObserverApplication extends Application implements Application.ActivityLifecycleCallbacks {
+import static com.example.u_nation.passcodelocksample.Constants.PREF_KEY_IS_LOCKED;
 
-    private HashSet<Integer> activityStack;
+public class MyApplication extends Application implements Application.ActivityLifecycleCallbacks {
+
+    private HashSet<Integer> activityStack = new HashSet<>();
+    private static MyApplication app;
     private boolean isLaunchApp;
+
+    public static MyApplication getInstance() {
+        if (app == null) app = new MyApplication();
+        return app;
+    }
 
     @Override
     public void onCreate() {
         super.onCreate();
-        activityStack = new HashSet<>();
+        Timber.plant(new Timber.DebugTree());
+        PrefUtil.setSharedPreferences(getApplicationContext());
         registerActivityLifecycleCallbacks(this);
     }
 
@@ -36,16 +44,11 @@ public class LockObserverApplication extends Application implements Application.
 
     @Override
     public void onActivityStarted(Activity activity) {
-        LogUtil.w("activityStack.size() = " + activityStack.size());
-        if (activityStack.size() == 0) {
-            LogUtil.w("起動");
-            isLaunchApp = true;
-        }
+        Timber.i("activityStack.size() = " + activityStack.size());
+        isLaunchApp = activityStack.size() == 0;
         activityStack.add(activity.hashCode());
         if (isLaunchApp) {
-            isLaunchApp = false;
-            if (checkIsLocked())
-                activity.startActivity(ConfirmPassCodeActivity.createIntent(getApplicationContext()));
+            if (PrefUtil.getBoolean(PREF_KEY_IS_LOCKED)) activity.startActivity(PassCodeActivity.createIntent(getApplicationContext(), false));
         }
     }
 
@@ -62,9 +65,9 @@ public class LockObserverApplication extends Application implements Application.
     @Override
     public void onActivityStopped(Activity activity) {
         activityStack.remove(activity.hashCode());
-        LogUtil.w("activityStack.size() = " + activityStack.size());
+        Timber.i("activityStack.size() = " + activityStack.size());
         if (activityStack.size() == 0) {
-            LogUtil.w("終了");
+            Timber.i("終了");
         }
     }
 
@@ -75,10 +78,5 @@ public class LockObserverApplication extends Application implements Application.
 
     @Override
     public void onActivityDestroyed(Activity activity) {
-    }
-
-    /* パスワード設定しているか判定 */
-    protected boolean checkIsLocked() {
-        return PrefUtil.getBool(getApplicationContext(), PREF_KEY_IS_LOCKED);
     }
 }

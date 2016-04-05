@@ -1,70 +1,62 @@
-package com.example.u_nation.passcodelocksample.activity;
+package com.example.u_nation.passcodelocksample.sample_activities;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.example.u_nation.passcodelocksample.AppConfig;
-import com.example.u_nation.passcodelocksample.InitPassCodeActivity;
+import com.example.u_nation.passcodelocksample.Constants;
+import com.example.u_nation.passcodelocksample.PassCodeActivity;
 import com.example.u_nation.passcodelocksample.R;
-import com.example.u_nation.passcodelocksample.util.LogUtil;
 import com.example.u_nation.passcodelocksample.util.PrefUtil;
 import com.example.u_nation.passcodelocksample.util.ShowToast;
 
+import timber.log.Timber;
 
-public class MainActivity extends ActionBarActivity {
 
-    private static final String KEY_PASSWORD = "key_password";
+public class MainActivity extends AppCompatActivity {
 
     public static Intent createIntent(Context context) {
-        Intent intent = new Intent(context, MainActivity.class);
-        return intent;
-    }
-
-    public static Intent createIntent(Context context, int password) {
-        Intent intent = new Intent(context, MainActivity.class);
-        intent.putExtra(KEY_PASSWORD, password);
-        return intent;
+        return new Intent(context, MainActivity.class);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        LogUtil.d("onCreate");
+        Timber.d("onCreate");
         setContentView(R.layout.activity_main);
-        getSupportActionBar().setTitle("MainActivity");
+        setTitle(this.getClass().getSimpleName());
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        LogUtil.d("onResume");
+        Timber.d("onResume");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        LogUtil.d("onPause");
+        Timber.d("onPause");
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        LogUtil.d("onStop");
+        Timber.d("onStop");
     }
 
     @Override
     protected void onUserLeaveHint() {
         super.onUserLeaveHint();
-        LogUtil.d("onUserLeaveHint");
+        Timber.d("onUserLeaveHint");
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        LogUtil.i("onDestroy");
+        Timber.i("onDestroy");
     }
 
     /*スタックを残さないケース*/
@@ -79,13 +71,12 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void onLock(View view) {
-        // 入力画面へ
-        startActivity(InitPassCodeActivity.createIntent(getApplicationContext()));
+        startActivity(PassCodeActivity.createIntent(getApplicationContext(), true));
     }
 
     public void onUnlock(View view) {
-        PrefUtil.setBool(getApplicationContext(), AppConfig.PREF_KEY_IS_LOCKED, false);
-        PrefUtil.setInt(getApplicationContext(), AppConfig.PREF_KEY_PASSWORD, 0);
+        PrefUtil.putBoolean(Constants.PREF_KEY_IS_LOCKED, false);
+        PrefUtil.putInt(Constants.PREF_KEY_PASSWORD, 0);
         ShowToast.show("パスコード解除しました！", this);
     }
 }

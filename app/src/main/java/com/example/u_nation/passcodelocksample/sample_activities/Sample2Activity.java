@@ -1,16 +1,17 @@
-package com.example.u_nation.passcodelocksample.activity;
+package com.example.u_nation.passcodelocksample.sample_activities;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.View;
 
 import com.example.u_nation.passcodelocksample.R;
-import com.example.u_nation.passcodelocksample.util.LogUtil;
 
-public class Sample2Activity extends ActionBarActivity {
+import timber.log.Timber;
+
+public class Sample2Activity extends AppCompatActivity {
 
     public static Intent createIntent(Context context) {
         Intent intent = new Intent(context, Sample2Activity.class);
@@ -20,43 +21,43 @@ public class Sample2Activity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        LogUtil.d("onCreate");
+        Timber.d("onCreate");
         setContentView(R.layout.activity_sample2);
-        getSupportActionBar().setTitle("Sample2Activity");
+        setTitle(this.getClass().getSimpleName());
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        LogUtil.d("onResume");
+        Timber.d("onResume");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        LogUtil.d("onPause");
+        Timber.d("onPause");
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        LogUtil.d("onStop");
+        Timber.d("onStop");
     }
 
     @Override
     protected void onUserLeaveHint() {
         super.onUserLeaveHint();
-        LogUtil.d("onUserLeaveHint");
+        Timber.d("onUserLeaveHint");
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        LogUtil.i("onDestroy");
+        Timber.i("onDestroy");
     }
 
-    public void onSample22(View view) {
-        startActivity(Sample22Activity.createIntent(getApplicationContext()));
+    public void onSample4(View view) {
+        startActivity(Sample4Activity.createIntent(getApplicationContext()));
     }
 
     public void onBack(View view) {
@@ -66,7 +67,7 @@ public class Sample2Activity extends ActionBarActivity {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-            LogUtil.i("KeyEvent.KEYCODE_BACK");
+            Timber.i("KeyEvent.KEYCODE_BACK");
             finish();
         }
         return super.onKeyDown(keyCode, event);

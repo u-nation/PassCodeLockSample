@@ -5,12 +5,11 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
-    <!-- Image系レイアウトのcontentDescription用 -->
     <string name="image_error">イメージ</string>
-    <string name="cansel">キャンセル</string>
+    <string name="cancel">キャンセル</string>
     <string name="passcode_lock">パスコードロック</string>
     <string name="passcode_set">パスコードを設定して下さい</string>
-    <string name="passcode_defalt_text">パスコードを忘れた場合は\n再インストールして下さい</string>
+    <string name="passcode_default_text">パスコードを入力してください</string>
     <string name="passcode_input">パスコード入力</string>
     <string name="passcode_input_sub">パスコードを入力してください</string>
     <string name="zero">0</string>
@@ -30,8 +29,7 @@
     <!-- SampleActivity -->
     <string name="sample1">SampleActivity1</string>
     <string name="sample2">SampleActivity2</string>
-    <string name="sample11">SampleActivity11</string>
-    <string name="sample22">SampleActivity22</string>
-    <string name="title_activity_lock_observer_action_bar">LockObserverActionBarActivity</string>
+    <string name="sample3">SampleActivity3</string>
+    <string name="sample4">SampleActivity4</string>
 
 </resources>
