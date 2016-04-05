@@ -32,7 +32,7 @@
             android:layout_height="0dp"
             android:layout_weight="4"
             android:gravity="top|center_horizontal"
-            android:text="@string/passcode_default_text"
+            android:text="@string/passcode_input"
             android:textColor="@color/black"
             android:textSize="@dimen/text_size_small"/>
     </LinearLayout>

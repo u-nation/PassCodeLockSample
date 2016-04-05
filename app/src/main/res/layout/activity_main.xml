@@ -21,25 +21,27 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dip"
         android:layout_below="@+id/title"
-        android:weightSum="4"
+        android:layout_marginTop="50dip"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:weightSum="4">
 
         <Button
             android:layout_width="0dip"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:layout_weight="1.5"
             android:onClick="onSample1"
-            android:text="サンプル画面1"/>
+            android:text="@string/sample1"
+            android:textAllCaps="false"/>
 
         <Button
             android:layout_width="0dip"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:layout_weight="1.5"
             android:onClick="onSample2"
-            android:text="サンプル画面2"/>
+            android:text="@string/sample2"
+            android:textAllCaps="false"/>
     </LinearLayout>
 
     <LinearLayout
@@ -53,13 +55,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="onLock"
-            android:text="パスコードロック設定"/>
+            android:text="Passcode Lock"/>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="onUnlock"
-            android:text="パスコードロック解除"/>
+            android:text="Passcode Unlock"/>
     </LinearLayout>
 
 

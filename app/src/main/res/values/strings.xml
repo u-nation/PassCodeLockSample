@@ -2,17 +2,13 @@
 <resources>
 
     <string name="app_name">PassCodeLockSample</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
 
-    <string name="image_error">イメージ</string>
-    <string name="cancel">キャンセル</string>
-    <string name="passcode_confirm">パスコードの確認</string>
-    <string name="passcode_lock">パスコードロック</string>
-    <string name="passcode_set">パスコードを設定して下さい</string>
-    <string name="passcode_default_text">パスコードを入力してください</string>
-    <string name="passcode_input">パスコード入力</string>
-    <string name="passcode_input_sub">パスコードを入力してください</string>
+    <string name="image_error">image</string>
+    <string name="cancel">Cancel</string>
+    <string name="passcode_confirm">Confirm your passcode</string>
+    <string name="passcode_lock">Passcode Lock</string>
+    <string name="passcode_set">Please set up your passcode</string>
+    <string name="passcode_input">Please enter your passcode</string>
     <string name="zero">0</string>
     <string name="one">1</string>
     <string name="two">2</string>
@@ -24,8 +20,7 @@
     <string name="eight">8</string>
     <string name="nine">9</string>
     <string name="period">.</string>
-    <string name="title_activity_sample1">Sample1Activity</string>
-    <string name="title_activity_sample2">Sample2Activity</string>
+
 
     <!-- SampleActivity -->
     <string name="sample1">SampleActivity1</string>

@@ -20,7 +20,7 @@ import com.example.u_nation.passcodelocksample.util.PrefUtil;
 import timber.log.Timber;
 
 public class PassCodeConfirmActivity extends AppCompatActivity implements View.OnClickListener {
-    private final String TEXT_SUB_MISTAKE = "パスコードが間違っています";
+    private final String TEXT_SUB_MISTAKE = "Wrong Passcode";
     private TextView text_sub_pass;
     private ImageView[] array_image_view;
     private StringBuilder stringBuilder = new StringBuilder();
@@ -52,16 +52,16 @@ public class PassCodeConfirmActivity extends AppCompatActivity implements View.O
     }
 
     private void initCircleCanvas() {
+        // black circle
         Canvas canvas;
         canvas = new Canvas(bitmapBlack);
-        // 円（青）の描画
         Paint paint;
         paint = new Paint();
         paint.setColor(Color.BLACK);
         paint.setStyle(Paint.Style.FILL);
         paint.setAntiAlias(true);
         canvas.drawCircle(150, 150, 148, paint);
-        // 円（灰）の描画
+        // grey circle
         Canvas canvas2;
         canvas2 = new Canvas(bitmapGrey);
         Paint paint2;
@@ -120,10 +120,10 @@ public class PassCodeConfirmActivity extends AppCompatActivity implements View.O
         }
     }
 
-    /*スタックを残さないように*/
     @Override
     protected void onPause() {
         super.onPause();
+        /*remove stack*/
         finish();
     }
 

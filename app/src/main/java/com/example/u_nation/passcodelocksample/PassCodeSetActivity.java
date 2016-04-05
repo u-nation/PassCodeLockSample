@@ -23,10 +23,10 @@ import timber.log.Timber;
 public class PassCodeSetActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final String KEY_IS_INITIALIZE = "init";
-    private final String TEXT_MAIN_CONFIRM = "パスコード再入力";
-    private final String TEXT_SUB_CONFIRM = "確認のためもう一度入力してください";
-    private final String TEXT_MAIN_MISTAKE = "パスコードロック";
-    private final String TEXT_SUB_MISTAKE = "パスコードが間違っています。もう一度最初から入力してください";
+    private final String TEXT_MAIN_CONFIRM = "Retry passcode";
+    private final String TEXT_SUB_CONFIRM = "Please double check your passcode";
+    private final String TEXT_MAIN_MISTAKE = "Passcode Lock";
+    private final String TEXT_SUB_MISTAKE = "Wrong passcode.Please Try it again";
     private TextView text_main_pass;
     private TextView text_sub_pass;
     private ImageView[] array_image_view;
@@ -64,14 +64,13 @@ public class PassCodeSetActivity extends AppCompatActivity implements View.OnCli
     private void initCircleCanvas() {
         Canvas canvas;
         canvas = new Canvas(bitmapBlack);
-        // 円（青）の描画
         Paint paint;
         paint = new Paint();
         paint.setColor(Color.BLACK);
         paint.setStyle(Paint.Style.FILL);
         paint.setAntiAlias(true);
         canvas.drawCircle(150, 150, 148, paint);
-        // 円（灰）の描画
+
         Canvas canvas2;
         canvas2 = new Canvas(bitmapGrey);
         Paint paint2;
@@ -123,7 +122,7 @@ public class PassCodeSetActivity extends AppCompatActivity implements View.OnCli
     private void confirmPassword() {
         if (isDoubleCheck) {
             if (password == Integer.parseInt(stringBuilder.toString())) {
-                ShowToast.show("パスコード設定しました！", this);
+                ShowToast.show("Locked!", this);
                 PrefUtil.putInt(Constants.PREF_KEY_PASSWORD, password);
                 PrefUtil.putBoolean(Constants.PREF_KEY_IS_LOCKED, true);
                 finish();

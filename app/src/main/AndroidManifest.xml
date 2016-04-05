@@ -25,22 +25,10 @@
             android:name=".PassCodeConfirmActivity"
             android:screenOrientation="portrait">
         </activity>
-        <activity
-            android:name=".sample_activities.Sample1Activity"
-            android:label="@string/title_activity_sample1">
-        </activity>
-        <activity
-            android:name=".sample_activities.Sample2Activity"
-            android:label="@string/title_activity_sample2">
-        </activity>
-        <activity
-            android:name=".sample_activities.Sample3Activity"
-            android:label="@string/title_activity_sample1">
-        </activity>
-        <activity
-            android:name=".sample_activities.Sample4Activity"
-            android:label="@string/title_activity_sample2">
-        </activity>
+        <activity android:name=".sample_activities.Sample1Activity"/>
+        <activity android:name=".sample_activities.Sample2Activity"/>
+        <activity android:name=".sample_activities.Sample3Activity"/>
+        <activity android:name=".sample_activities.Sample4Activity"/>
     </application>
 
 </manifest>

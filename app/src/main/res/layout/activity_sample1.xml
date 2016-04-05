@@ -20,7 +20,7 @@
         android:layout_above="@+id/back"
         android:layout_centerHorizontal="true"
         android:onClick="onSample3"
-        android:text="SampleActivity3へ"
+        android:text="@string/sample3"
         android:textAllCaps="false"/>
 
     <Button
@@ -29,6 +29,6 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:onClick="onBack"
-        android:text="戻る"/>
+        android:text="back"/>
 
 </RelativeLayout>

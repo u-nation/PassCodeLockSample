@@ -59,13 +59,13 @@ public class MainActivity extends AppCompatActivity {
         Timber.i("onDestroy");
     }
 
-    /*スタックを残さないケース*/
+    /*no stack*/
     public void onSample1(View view) {
         startActivity(Sample1Activity.createIntent(getApplicationContext()));
         finish();
     }
 
-    /*スタックを残す(タブ管理などの基幹的なActivity)場合*/
+    /*remain stack*/
     public void onSample2(View view) {
         startActivity(Sample2Activity.createIntent(getApplicationContext()));
     }
@@ -77,6 +77,6 @@ public class MainActivity extends AppCompatActivity {
     public void onUnlock(View view) {
         PrefUtil.putBoolean(Constants.PREF_KEY_IS_LOCKED, false);
         PrefUtil.putInt(Constants.PREF_KEY_PASSWORD, 0);
-        ShowToast.show("パスコード解除しました！", this);
+        ShowToast.show("Unlock passcode!", this);
     }
 }

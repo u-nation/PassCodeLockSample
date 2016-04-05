@@ -16,7 +16,6 @@ public class MyApplication extends Application implements Application.ActivityLi
 
     private HashSet<Integer> activityStack = new HashSet<>();
     private static MyApplication app;
-    private boolean isLaunchApp;
 
     public static MyApplication getInstance() {
         if (app == null) app = new MyApplication();
@@ -45,7 +44,7 @@ public class MyApplication extends Application implements Application.ActivityLi
     @Override
     public void onActivityStarted(Activity activity) {
         Timber.i("activityStack.size() = " + activityStack.size());
-        isLaunchApp = activityStack.size() == 0;
+        boolean isLaunchApp = activityStack.size() == 0;
         activityStack.add(activity.hashCode());
         if (isLaunchApp) {
             if (PrefUtil.getBoolean(PREF_KEY_IS_LOCKED)) activity.startActivity(PassCodeConfirmActivity.createIntent(getApplicationContext()));
@@ -67,7 +66,7 @@ public class MyApplication extends Application implements Application.ActivityLi
         activityStack.remove(activity.hashCode());
         Timber.i("activityStack.size() = " + activityStack.size());
         if (activityStack.size() == 0) {
-            Timber.i("終了");
+            Timber.i("finish");
         }
     }
 
