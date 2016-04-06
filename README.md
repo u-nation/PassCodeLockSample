@@ -2,13 +2,12 @@
 ![](art/passcodelock.gif)
 
 ## Description
-Hi, I'm [@u_nation](https://twitter.com/u_nation)  
-I made a simple sample for implementing *passcode lock* like iOS.  
-This sample owes the prime idea to manage application lifecycle to Mr.[@heki1224](https://twitter.com/heki1224) [Reference Link](http://www.slideshare.net/heki1224/android-45736528)
+This is a sample program of *passcode lock* looks like iOS.  
+The core idea of managing application lifecycle is based on [this slide](http://www.slideshare.net/heki1224/android-45736528) by Mr.[@heki1224](https://twitter.com/heki1224)
 ****
-## Usage 
-***Only API 15 over***  
-You need implements Application.ActivityLifecycleCallbacks to your Application class.  
+## Usage
+***Only API 15 or over***  
+You need implement Application.ActivityLifecycleCallbacks to your Application class.  
 In order to manage Activity stack appropriately, please start your Activity after **activityStack.add(activity.hashCode());**.
 ```java
 public class MyApplication extends Application implements Application.ActivityLifecycleCallbacks {
