@@ -44,9 +44,9 @@ public class MyApplication extends Application implements Application.ActivityLi
     @Override
     public void onActivityStarted(Activity activity) {
         Timber.i("activityStack.size() = " + activityStack.size());
-        boolean isLaunchApp = activityStack.size() == 0;
+        boolean isForeground = activityStack.size() == 0;
         activityStack.add(activity.hashCode());
-        if (isLaunchApp) {
+        if (isForeground) {
             if (PrefUtil.getBoolean(PREF_KEY_IS_LOCKED)) activity.startActivity(PassCodeConfirmActivity.createIntent(getApplicationContext()));
         }
     }
@@ -65,9 +65,7 @@ public class MyApplication extends Application implements Application.ActivityLi
     public void onActivityStopped(Activity activity) {
         activityStack.remove(activity.hashCode());
         Timber.i("activityStack.size() = " + activityStack.size());
-        if (activityStack.size() == 0) {
-            Timber.i("finish");
-        }
+        boolean isBackground = activityStack.size() == 0;
     }
 
     @Override

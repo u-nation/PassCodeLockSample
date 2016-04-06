@@ -24,7 +24,7 @@ public class PassCodeSetActivity extends AppCompatActivity implements View.OnCli
 
     private static final String KEY_IS_INITIALIZE = "init";
     private final String TEXT_MAIN_CONFIRM = "Retry passcode";
-    private final String TEXT_SUB_CONFIRM = "Please double check your passcode";
+    private final String TEXT_SUB_CONFIRM = "Double check your passcode";
     private final String TEXT_MAIN_MISTAKE = "Passcode Lock";
     private final String TEXT_SUB_MISTAKE = "Wrong passcode.Please Try it again";
     private TextView text_main_pass;
