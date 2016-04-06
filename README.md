@@ -7,7 +7,7 @@ I made a simple sample for implementing *passcode lock* like iOS.
 This sample owes the prime idea to manage application lifecycle to Mr.[@heki1224](https://twitter.com/heki1224) [Reference Link](http://www.slideshare.net/heki1224/android-45736528)
 ****
 ## Usage 
-***Only API 14 over***  
+***Only API 15 over***  
 You need implements Application.ActivityLifecycleCallbacks to your Application class.  
 In order to manage Activity stack appropriately, please start your Activity after **activityStack.add(activity.hashCode());**.
 ```java
