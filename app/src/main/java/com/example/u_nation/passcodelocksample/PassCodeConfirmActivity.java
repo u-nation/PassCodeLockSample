@@ -20,7 +20,7 @@ import com.example.u_nation.passcodelocksample.util.PrefUtil;
 import timber.log.Timber;
 
 public class PassCodeConfirmActivity extends AppCompatActivity implements View.OnClickListener {
-    private final String TEXT_SUB_MISTAKE = "Wrong Passcode";
+    private final String TEXT_SUB_MISTAKE = "Wrong passcode.Please try it again";
     private TextView text_sub_pass;
     private ImageView[] array_image_view;
     private StringBuilder stringBuilder = new StringBuilder();
@@ -123,14 +123,13 @@ public class PassCodeConfirmActivity extends AppCompatActivity implements View.O
     @Override
     protected void onPause() {
         super.onPause();
-        /*remove stack*/
-        finish();
+        finish();//remove stack
     }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-            moveTaskToBack(true);
+            moveTaskToBack(true); //Application will be background without regard for Activity stack
             return true;
         }
         return super.onKeyDown(keyCode, event);

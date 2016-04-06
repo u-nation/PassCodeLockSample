@@ -22,10 +22,10 @@ import timber.log.Timber;
 
 public class PassCodeSetActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private final String TEXT_MAIN_CONFIRM = "Retry passcode";
-    private final String TEXT_SUB_CONFIRM = "Double check your passcode";
+    private final String TEXT_MAIN_CONFIRM = "Confirm passcode";
+    private final String TEXT_SUB_CONFIRM = "Please re-enter passcode";
     private final String TEXT_MAIN_MISTAKE = "Passcode Lock";
-    private final String TEXT_SUB_MISTAKE = "Wrong passcode.Please Try it again";
+    private final String TEXT_SUB_MISTAKE = "Wrong passcode.Please try it again";
     private TextView text_main_pass;
     private TextView text_sub_pass;
     private ImageView[] array_image_view;

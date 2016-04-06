@@ -5,10 +5,10 @@
 
     <string name="image_error">image</string>
     <string name="cancel">Cancel</string>
-    <string name="passcode_confirm">Confirm your passcode</string>
+    <string name="passcode_confirm">Enter passcode</string>
     <string name="passcode_lock">Passcode Lock</string>
-    <string name="passcode_set">Please set up your passcode</string>
-    <string name="passcode_input">Please enter your passcode</string>
+    <string name="passcode_set">Please set up passcode</string>
+    <string name="passcode_input">Please enter passcode</string>
     <string name="zero">0</string>
     <string name="one">1</string>
     <string name="two">2</string>
