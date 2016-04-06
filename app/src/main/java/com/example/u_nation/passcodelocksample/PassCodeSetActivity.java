@@ -22,7 +22,6 @@ import timber.log.Timber;
 
 public class PassCodeSetActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private static final String KEY_IS_INITIALIZE = "init";
     private final String TEXT_MAIN_CONFIRM = "Retry passcode";
     private final String TEXT_SUB_CONFIRM = "Double check your passcode";
     private final String TEXT_MAIN_MISTAKE = "Passcode Lock";
@@ -37,8 +36,8 @@ public class PassCodeSetActivity extends AppCompatActivity implements View.OnCli
     private int password;
     private boolean isDoubleCheck = false;
 
-    public static Intent createIntent(Context context, boolean isInitialize) {
-        return new Intent(context, PassCodeSetActivity.class).putExtra(KEY_IS_INITIALIZE, isInitialize);
+    public static Intent createIntent(Context context) {
+        return new Intent(context, PassCodeSetActivity.class);
     }
 
     @Override

@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onLock(View view) {
-        startActivity(PassCodeSetActivity.createIntent(getApplicationContext(), true));
+        startActivity(PassCodeSetActivity.createIntent(getApplicationContext()));
     }
 
     public void onUnlock(View view) {
