@@ -15,6 +15,18 @@ public class MyApplication extends Application implements Application.ActivityLi
     private HashSet<Integer> activityStack = new HashSet<>();
 
     @Override
+    public void onCreate() {
+        super.onCreate();
+        registerActivityLifecycleCallbacks(this);
+    }
+
+    @Override
+    public void onTerminate() {
+        unregisterActivityLifecycleCallbacks(this);
+        super.onTerminate();
+    }
+    
+    @Override
     public void onActivityStarted(Activity activity) {
         boolean isForeground = activityStack.size() == 0;
         activityStack.add(activity.hashCode());
