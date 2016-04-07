@@ -43,7 +43,7 @@ public class MyApplication extends Application implements Application.ActivityLi
 
     @Override
     public void onActivityStarted(Activity activity) {
-        Timber.i("activityStack.size() = " + activityStack.size());
+        Timber.i("activityStack.size() = %s\nactivity_name = %s", activityStack.size(), activity.toString());
         boolean isForeground = activityStack.size() == 0;
         activityStack.add(activity.hashCode());
         if (isForeground) {
@@ -64,7 +64,7 @@ public class MyApplication extends Application implements Application.ActivityLi
     @Override
     public void onActivityStopped(Activity activity) {
         activityStack.remove(activity.hashCode());
-        Timber.i("activityStack.size() = " + activityStack.size());
+        Timber.d("activityStack.size() = %s\nactivity_name = %s", activityStack.size(), activity.toString());
         boolean isBackground = activityStack.size() == 0;
     }
 
