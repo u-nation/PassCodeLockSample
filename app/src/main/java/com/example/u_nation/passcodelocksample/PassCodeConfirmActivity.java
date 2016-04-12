@@ -123,7 +123,7 @@ public class PassCodeConfirmActivity extends AppCompatActivity implements View.O
     @Override
     protected void onPause() {
         super.onPause();
-        finish();//remove stack
+        finish(); //remove stack
     }
 
     @Override
