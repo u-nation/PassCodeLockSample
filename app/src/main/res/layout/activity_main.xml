@@ -1,12 +1,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:paddingBottom="@dimen/activity_vertical_margin"
                 android:paddingLeft="@dimen/activity_horizontal_margin"
                 android:paddingRight="@dimen/activity_horizontal_margin"
-                android:paddingTop="@dimen/activity_vertical_margin"
-                tools:context=".MainActivity">
+                android:paddingTop="@dimen/activity_vertical_margin">
 
     <TextView
         android:id="@+id/title"
@@ -16,9 +14,10 @@
         android:layout_centerHorizontal="true"
         android:text="PassCodeLockSample"
         android:textColor="#178FCA"
-        android:textSize="22sp"/>
+        android:textSize="22sp" />
 
     <LinearLayout
+        android:id="@+id/root_transition"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/title"
@@ -33,7 +32,7 @@
             android:layout_weight="1.5"
             android:onClick="onSample1"
             android:text="@string/sample1"
-            android:textAllCaps="false"/>
+            android:textAllCaps="false" />
 
         <Button
             android:layout_width="0dip"
@@ -41,13 +40,15 @@
             android:layout_weight="1.5"
             android:onClick="onSample2"
             android:text="@string/sample2"
-            android:textAllCaps="false"/>
+            android:textAllCaps="false" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_below="@+id/root_transition"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dip"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -55,13 +56,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="onLock"
-            android:text="Passcode Lock"/>
+            android:text="Passcode Lock" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="onUnlock"
-            android:text="Passcode Unlock"/>
+            android:text="Passcode Unlock" />
     </LinearLayout>
 
 

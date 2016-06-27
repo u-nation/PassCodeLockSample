@@ -2,7 +2,10 @@ package com.example.u_nation.passcodelocksample;
 
 import android.app.Activity;
 import android.app.Application;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 
 import com.example.u_nation.passcodelocksample.util.PrefUtil;
 
@@ -16,6 +19,10 @@ public class MyApplication extends Application implements Application.ActivityLi
 
     private HashSet<Integer> activityStack = new HashSet<>();
     private static MyApplication app;
+
+    private Handler handler = new Handler(Looper.getMainLooper());
+    private int orientation = Configuration.ORIENTATION_PORTRAIT;
+    private boolean is_rotated = false;
 
     public static MyApplication getInstance() {
         if (app == null) app = new MyApplication();
@@ -38,16 +45,18 @@ public class MyApplication extends Application implements Application.ActivityLi
 
     @Override
     public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
-
+        handler.removeCallbacksAndMessages(null);
     }
 
     @Override
     public void onActivityStarted(Activity activity) {
-        Timber.i("activityStack.size() = %s\nactivity_name = %s", activityStack.size(), activity.toString());
-        boolean isForeground = activityStack.size() == 0;
+        handler.removeCallbacksAndMessages(null);
+        Timber.i("Started\nactivityStack.size() = %s\nactivity_name = %s", activityStack.size(), activity.toString());
+        boolean isForeground = activityStack.size() == 0 && !is_rotated;
+        is_rotated = false;
         activityStack.add(activity.hashCode());
-        if (isForeground) {
-            if (PrefUtil.getBoolean(PREF_KEY_IS_LOCKED)) activity.startActivity(PassCodeConfirmActivity.createIntent(getApplicationContext()));
+        if (isForeground && PrefUtil.getBoolean(PREF_KEY_IS_LOCKED)) {
+            activity.startActivity(PassCodeConfirmActivity.createIntent(getApplicationContext()));
         }
     }
 
@@ -64,8 +73,30 @@ public class MyApplication extends Application implements Application.ActivityLi
     @Override
     public void onActivityStopped(Activity activity) {
         activityStack.remove(activity.hashCode());
-        Timber.d("activityStack.size() = %s\nactivity_name = %s", activityStack.size(), activity.toString());
-        boolean isBackground = activityStack.size() == 0;
+        Timber.i("Stopped\nactivityStack.size() = %s\nactivity_name = %s", activityStack.size(), activity.toString());
+
+        // Check Orientation
+        Configuration conf = getResources().getConfiguration();
+        is_rotated = orientation != conf.orientation;
+        orientation = conf.orientation;
+        Timber.i(orientation == Configuration.ORIENTATION_PORTRAIT ? "PORTRAIT" : "LANDSCAPE");
+
+        boolean isBackground = activityStack.size() == 0 && !is_rotated;
+        if (isBackground) {
+            Timber.i("normal isBackground");
+            //doing something
+        }
+
+        if (activityStack.size() == 0 && is_rotated) {
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    is_rotated = false;
+                    Timber.i("postDelayed isBackground");
+                    //doing something
+                }
+            }, 200);
+        }
     }
 
     @Override
