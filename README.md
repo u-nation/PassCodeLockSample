@@ -3,15 +3,15 @@
 
 ## Description
 This is a sample program of *passcode lock* looks like iOS.  
-The core idea of managing application lifecycle is based on [this slide](http://www.slideshare.net/heki1224/android-45736528) by Mr.[@heki1224](https://twitter.com/heki1224)
 ****
 ## Usage
-***API 15~~***  
-You need implement Application.ActivityLifecycleCallbacks to your Application class.  
-In order to manage Activity stack appropriately, please start your Activity after **activityStack.add(activity.hashCode());**.
+***API 15~~***
+
+You need implement Application.ActivityLifecycleCallbacks to your Application class and override **ComponentCallbacks2#onTrimMemory** which tell you UI hidden.
+
 ```java
 public class MyApplication extends Application implements Application.ActivityLifecycleCallbacks {
-    private HashSet<Integer> activityStack = new HashSet<>();
+    private boolean isNeedPassCodeConfirmation = true;
 
     @Override
     public void onCreate() {
@@ -19,23 +19,19 @@ public class MyApplication extends Application implements Application.ActivityLi
         registerActivityLifecycleCallbacks(this);
     }
 
-    @Override
-    public void onTerminate() {
-        unregisterActivityLifecycleCallbacks(this);
-        super.onTerminate();
+    @Override public void onTrimMemory(int level) {
+        super.onTrimMemory(level);
+        if (level == ComponentCallbacks2.TRIM_MEMORY_UI_HIDDEN) {
+            isNeedPassCodeConfirmation = true;
+        }
     }
     
     @Override
     public void onActivityStarted(Activity activity) {
-        boolean isForeground = activityStack.size() == 0;
-        activityStack.add(activity.hashCode());
-        if (isForeground) activity.startActivity(/*Activity for entering passcode*/);
-    }
-
-    @Override
-    public void onActivityStopped(Activity activity) {
-        activityStack.remove(activity.hashCode());
-        boolean isBackground = activityStack.size() == 0;
+        if (isNeedPassCodeConfirmation && PrefUtil.getBoolean(PREF_KEY_IS_LOCKED)) {
+            activity.startActivity(/*Activity for entering passcode*/);
+        }  
+        isNeedPassCodeConfirmation = false;
     }
     ~~~~
 }
