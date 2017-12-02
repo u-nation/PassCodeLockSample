@@ -22,7 +22,7 @@
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".PassCodeConfirmActivity"
+            android:name=".PassCodeConfirmationActivity"
             android:screenOrientation="portrait">
         </activity>
         <activity android:name=".sample_activities.Sample1Activity"/>
