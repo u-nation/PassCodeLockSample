@@ -19,7 +19,7 @@ import com.example.u_nation.passcodelocksample.util.PrefUtil;
 
 import timber.log.Timber;
 
-public class PassCodeConfirmActivity extends AppCompatActivity implements View.OnClickListener {
+public class PassCodeConfirmationActivity extends AppCompatActivity implements View.OnClickListener {
     private final String TEXT_SUB_MISTAKE = "Wrong passcode.Please try it again";
     private TextView text_sub_pass;
     private ImageView[] array_image_view;
@@ -29,7 +29,7 @@ public class PassCodeConfirmActivity extends AppCompatActivity implements View.O
     private Bitmap bitmapGrey = Bitmap.createBitmap(300, 300, Bitmap.Config.ARGB_8888);
 
     public static Intent createIntent(Context context) {
-        return new Intent(context, PassCodeConfirmActivity.class);
+        return new Intent(context, PassCodeConfirmationActivity.class);
     }
 
     @Override
